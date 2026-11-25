@@ -11,15 +11,23 @@ Site statique (HTML, CSS, JavaScript), sans installation, sans compilation, sans
 | Confidentialité | `confidentialite.html` |
 | Couleurs (charte) et polices | variables en haut de `assets/css/style.css` |
 | Logo, bannière | `assets/img/` |
-| Polices EB Garamond et Inter (hébergées avec le site) | `assets/fonts/` |
+| Polices EB Garamond (titres) et Public Sans (texte), hébergées avec le site | `assets/fonts/` |
 
 Voir le site en local : double-cliquer sur `index.html`.
 
-Un tarif apparaît à plusieurs endroits (carte de l'offre, conditions, FAQ) : les mettre tous à jour en même temps.
+## Règles de design
+
+Le site suit le skill `frontend-design` (dans `.claude/skills/`). Pour tout ajout :
+
+- pas de sur-titre en capitales au-dessus des titres, pas de mot isolé en italique ou en couleur dans un titre ;
+- pas de numéros 01 / 02 / 03, sauf pour une vraie suite d’étapes (la méthode) ;
+- pas de flèche → dans les boutons et liens, pas de séparateur « · » ;
+- une seule animation automatique : l’apparition du premier écran ;
+- espace fine insécable avant « ? : ; ! ».
 
 ## Ce que le site n'intègre pas
 
-Aucun outil de statistiques, aucun cookie, aucun traceur, aucun formulaire, aucune police ou ressource chargée depuis un service tiers. Seul l'hébergeur (GitHub) enregistre des journaux techniques de connexion. Si un outil est ajouté plus tard, mettre à jour `confidentialite.html`.
+Aucun outil de statistiques, aucun cookie, aucun traceur, aucun formulaire, aucune police ou ressource chargée depuis un service tiers. Seul l'hébergeur (Cloudflare) traite des journaux techniques de connexion. Ne pas activer Cloudflare Web Analytics sans mettre à jour `confidentialite.html`. Si un outil est ajouté plus tard, mettre à jour `confidentialite.html`.
 
 ## Avant publication (accord de N'goné obligatoire)
 
@@ -28,26 +36,26 @@ Aucun outil de statistiques, aucun cookie, aucun traceur, aucun formulaire, aucu
 - Ajouter le lien LinkedIn quand l'URL exacte est confirmée.
 - Faire valider l'aperçu complet.
 
-## Mise en ligne sur GitHub Pages (gratuit)
+## Mise en ligne sur Cloudflare Pages (gratuit)
 
-1. Dans le compte GitHub d'ASTELME, créer un dépôt **public** (par exemple `astelme`).
-2. Y envoyer tout le contenu de ce dossier (« Add file » → « Upload files »), y compris le fichier `.nojekyll`.
-3. **Settings → Pages → Source : Deploy from a branch**, branche `main`, dossier `/ (root)`.
-4. Aperçu en ligne après une à deux minutes : `https://<compte>.github.io/astelme/`.
+1. Pousser ce dossier dans un dépôt GitHub (privé ou public).
+2. Cloudflare : **Workers & Pages → Create → Pages → Connect to Git**, choisir le dépôt.
+3. Réglages de build : **Framework preset : None**, **Build command : vide**, **Build output directory : `/`**.
+4. Aperçu en ligne après une minute : `https://<projet>.pages.dev`.
 
-Coût : 0 €. L'hébergement GitHub Pages est gratuit pour un dépôt public. Le domaine astelme.fr reste payé chez OVHcloud comme aujourd'hui.
+Coût : 0 €. Le domaine astelme.fr reste payé chez OVHcloud.
 
 ## Brancher astelme.fr (domaine chez OVHcloud)
 
 À faire uniquement avec l'accord de N'goné.
 
-1. GitHub : **Settings → Pages → Custom domain** → `www.astelme.fr`.
-2. OVHcloud, zone DNS d'astelme.fr :
-   - `CNAME` : `www` → `<compte>.github.io.`
-   - pour `astelme.fr` sans www : les enregistrements `A` indiqués dans la documentation GitHub Pages (« Managing a custom domain »).
-3. Ne modifier **que** ces lignes. Ne pas toucher aux enregistrements `MX`, `SPF` (TXT), `DKIM` ni `autodiscover`, sinon la messagerie contact@astelme.fr cesse de fonctionner.
-4. Une fois le certificat émis, cocher **Enforce HTTPS**.
+1. Cloudflare Pages : **Custom domains → Set up a custom domain** → `www.astelme.fr`, puis `astelme.fr`.
+2. Deux options :
+   - garder les DNS chez OVHcloud : ajouter le `CNAME` `www` → `<projet>.pages.dev.` indiqué par Cloudflare ;
+   - ou transférer la gestion DNS à Cloudflare (changement des serveurs DNS chez OVHcloud), nécessaire pour le domaine sans www.
+3. Dans les deux cas, recopier **à l’identique** les enregistrements `MX`, `SPF` (TXT), `DKIM` et `autodiscover`, sinon la messagerie contact@astelme.fr cesse de fonctionner.
+4. Le certificat HTTPS est émis automatiquement par Cloudflare.
 
 ## Mettre à jour le site
 
-Modifier le fichier concerné sur github.com (icône crayon), puis « Commit changes » : le site se met à jour en une à deux minutes.
+Modifier le fichier concerné sur github.com (icône crayon), puis « Commit changes » : Cloudflare republie le site en une à deux minutes.

@@ -11,16 +11,9 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "EB Garamond";
-  src: url("../fonts/eb-garamond-italic.woff2") format("woff2");
-  font-weight: 400 700;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../fonts/inter.woff2") format("woff2");
-  font-weight: 400 700;
+  font-family: "Public Sans";
+  src: url("../fonts/public-sans.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -40,13 +33,13 @@
   --line: #e4dccf;
 
   --serif: "EB Garamond", Georgia, serif;
-  --sans: "Inter", Arial, sans-serif;
+  --sans: "Public Sans", "Segoe UI", Arial, sans-serif;
 
   --wrap: 1160px;
   --gutter: clamp(20px, 4vw, 40px);
   --section: clamp(64px, 8vw, 104px);
   --section-tight: clamp(40px, 5vw, 64px);
-  --radius: 14px;
+  --radius: 6px;
   --shadow: 0 18px 50px -24px rgba(16, 28, 44, 0.35);
 }
 
@@ -111,24 +104,6 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
 }
 .skip:focus { left: 8px; }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  margin-bottom: 20px;
-}
-.eyebrow::before {
-  content: "";
-  width: 32px;
-  height: 1px;
-  background: currentColor;
-}
-.on-dark .eyebrow { color: var(--gold); }
 
 .lead {
   font-size: clamp(1.05rem, 1.5vw, 1.2rem);
@@ -145,18 +120,15 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   justify-content: center;
   gap: 10px;
   padding: 15px 26px;
-  border-radius: 999px;
+  border-radius: 6px;
   border: 1px solid transparent;
   font-family: var(--sans);
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
-.btn:hover { transform: translateY(-2px); }
-.btn .arrow { transition: transform 0.2s ease; }
-.btn:hover .arrow { transform: translateX(4px); }
 
 .btn-gold { background: var(--gold); color: var(--navy); }
 .btn-gold:hover { background: var(--gold-light); }
@@ -265,7 +237,7 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
 .hero {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(120% 90% at 85% 10%, var(--navy-3) 0%, var(--navy) 55%);
+  background: var(--navy);
   color: var(--white);
   padding: clamp(150px, 20vw, 220px) 0 clamp(80px, 11vw, 130px);
 }
@@ -279,10 +251,6 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   pointer-events: none;
 }
 .hero-content { position: relative; max-width: 860px; }
-.hero h1 em {
-  font-style: italic;
-  color: var(--gold);
-}
 .hero .lead { margin-top: 28px; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
 .hero-tags {
@@ -353,16 +321,11 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   background: var(--cream);
 }
 .public .tag {
-  display: inline-block;
-  font-size: 0.72rem;
+  display: block;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
   color: var(--gold-dark);
-  border: 1px solid var(--gold);
-  border-radius: 999px;
-  padding: 5px 12px;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 .public h3 { margin-bottom: 12px; }
 .public p { color: var(--muted); font-size: 0.98rem; }
@@ -374,25 +337,16 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   grid-template-columns: 1.25fr 0.75fr;
   background: var(--white);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow);
 }
 .offer-body { padding: clamp(28px, 4vw, 52px); }
-.offer-num {
-  font-family: var(--serif);
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--gold-dark);
-  margin-bottom: 10px;
-}
 .offer-kicker {
-  font-size: 0.74rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
   color: var(--gold-dark);
-  margin: 10px 0 18px;
+  margin: 8px 0 18px;
 }
 .offer-body > p { color: #3a4556; }
 .features {
@@ -452,9 +406,7 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   border-radius: 50%;
 }
 .price-prefix {
-  font-size: 0.78rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 0.92rem;
   color: var(--gold);
   min-height: 1.3em;
 }
@@ -560,7 +512,6 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   font-size: 3.6rem;
   line-height: 1;
   color: var(--gold);
-  font-style: italic;
 }
 .step h3 { margin: 14px 0 12px; font-size: 2rem; }
 .step p { color: rgba(255, 255, 255, 0.74); font-size: 0.98rem; }
@@ -569,8 +520,8 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
 .portrait {
   position: relative;
   max-width: 420px;
-  border-radius: 20px;
-  background: radial-gradient(120% 100% at 85% 0%, var(--navy-3), var(--navy) 65%);
+  border-radius: 8px;
+  background: var(--navy);
   color: var(--white);
   padding: clamp(36px, 4vw, 48px);
   overflow: hidden;
@@ -592,36 +543,17 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   line-height: 1.05;
 }
 .portrait .role {
-  margin-top: 14px;
-  color: var(--gold);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  line-height: 1.8;
+  margin-top: 12px;
+  color: var(--gold-light);
+  font-size: 0.98rem;
+  line-height: 1.6;
 }
 .portrait .fact {
   margin-top: 36px;
   padding-top: 32px;
   border-top: 1px solid rgba(198, 170, 123, 0.35);
 }
-.portrait .fact strong {
-  display: block;
-  font-family: var(--serif);
-  font-size: clamp(3.6rem, 5vw, 4.4rem);
-  font-weight: 400;
-  line-height: 0.9;
-  color: var(--white);
-  font-variant-numeric: lining-nums;
-}
-.portrait .fact span {
-  display: block;
-  margin-top: 14px;
-  max-width: 28ch;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.74);
-}
+.portrait .fact { margin-bottom: 0; font-size: 1.05rem; line-height: 1.55; color: rgba(255, 255, 255, 0.82); max-width: 30ch; }
 
 .parcours {
   list-style: none;
@@ -696,7 +628,7 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
 .contact {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(110% 120% at 10% 100%, var(--navy-3) 0%, var(--navy) 60%);
+  background: var(--navy);
   color: var(--white);
 }
 .contact-grid {
@@ -705,11 +637,10 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   gap: clamp(36px, 6vw, 80px);
   align-items: center;
 }
-.contact h2 em { font-style: italic; color: var(--gold); }
 .contact-card {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(198, 170, 123, 0.35);
-  border-radius: 20px;
+  border-radius: 8px;
   padding: clamp(28px, 4vw, 44px);
 }
 .contact-card .who { font-family: var(--serif); font-size: 1.7rem; line-height: 1.15; }
@@ -776,7 +707,7 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   color: #6b4a00;
 }
 
-/* ---------- Apparition au défilement ---------- */
+/* ---------- Apparition du premier écran (seul moment animé) ---------- */
 
 .js .reveal {
   opacity: 0;
@@ -789,7 +720,7 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
-  .btn, .btn .arrow { transition: none; }
+  .btn { transition: none; }
 }
 
 /* ---------- Adaptation aux écrans ---------- */
@@ -862,18 +793,16 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   position: relative;
   background: rgba(16, 28, 44, 0.55);
   border: 1px solid rgba(198, 170, 123, 0.35);
-  border-radius: 20px;
+  border-radius: 8px;
   padding: 28px 28px 22px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
 }
 .hero-card-title {
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  color: var(--gold-light);
   margin-bottom: 8px;
 }
 .hero-offer {
@@ -919,9 +848,7 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   color: var(--gold);
   text-decoration: none;
 }
-.hero-card-link:hover { color: var(--gold-light); }
-.hero-card-link .arrow { transition: transform 0.2s ease; }
-.hero-card-link:hover .arrow { transform: translateX(4px); }
+.hero-card-link:hover { color: var(--gold-light); text-decoration: underline; }
 
 /* 3. FAQ sur deux colonnes */
 .faq-layout {
@@ -971,7 +898,7 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
     justify-content: center;
     gap: 8px;
     padding: 13px 10px;
-    border-radius: 999px;
+    border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: var(--white);
     font-size: 0.95rem;
@@ -1005,7 +932,7 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   background: var(--white);
-  border-radius: 18px;
+  border-radius: 8px;
   box-shadow: 0 24px 60px -28px rgba(16, 28, 44, 0.45), 0 0 0 1px rgba(16, 28, 44, 0.04);
   overflow: hidden;
 }
@@ -1014,28 +941,6 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   padding: clamp(26px, 2.6vw, 36px) clamp(22px, 2.2vw, 32px);
 }
 .pillars-panel li + li { border-left: 1px solid var(--line); }
-.pillars-panel li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 2px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-}
-.pillars-panel li:hover::before { transform: scaleX(1); }
-.pillar-num {
-  display: block;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: var(--gold-dark);
-  font-variant-numeric: lining-nums;
-  margin-bottom: 14px;
-}
 .pillars-panel h3 { font-size: 1.4rem; margin-bottom: 8px; }
 .pillars-panel p { font-size: 0.93rem; color: var(--muted); line-height: 1.55; }
 
@@ -1052,15 +957,6 @@ h3 { font-size: clamp(1.5rem, 2.2vw, 1.85rem); line-height: 1.2; }
   .pillars-panel h3 { font-size: 1.2rem; }
   .pillars-panel p { font-size: 0.88rem; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .pillars-panel li::before { transition: none; }
-}
 
 /* 5. Contact : les liens e-mail et téléphone deviennent les actions principales */
-.contact-list a { grid-template-columns: 24px 1fr auto; font-size: 1.15rem; }
-.contact-list a::after {
-  content: "→";
-  color: var(--gold);
-  transition: transform 0.2s ease;
-}
-.contact-list a:hover::after { transform: translateX(4px); }
+.contact-list a { font-size: 1.15rem; }
