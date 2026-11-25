@@ -29,6 +29,22 @@
     });
   }
 
+  // Méthode : les étapes s'allument quand la section arrive à l'écran
+  var steps = document.querySelector(".steps");
+  if (steps) {
+    if (!("IntersectionObserver" in window)) {
+      steps.classList.add("go");
+    } else {
+      var stepsObs = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          steps.classList.add("go");
+          stepsObs.disconnect();
+        }
+      }, { threshold: 0.4 });
+      stepsObs.observe(steps);
+    }
+  }
+
   if (!("IntersectionObserver" in window)) {
     document.querySelectorAll(".reveal").forEach(function (el) {
       el.classList.add("in");
